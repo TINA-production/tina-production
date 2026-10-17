@@ -94,11 +94,25 @@
     }
 
     .hero__title {
-      font-size: clamp(28px, 4vw, 44px);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin: 0 0 12px;
-    }
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+
+  /* выстраиваем текст и картинку в строку */
+  display: flex;
+  align-items: center;   /* выравнивание по центру по вертикали */
+  flex-wrap: wrap;       /* на узких экранах картинка переносится под текст */
+  gap: 0.4em;            /* отступ между текстом и картинкой */
+}
+
+/* сама картинка — её высота = размеру шрифта заголовка */
+.hero__title-logo {
+  height: 0.9em;         /* ← см. ниже, как подобрать */
+  width: auto;
+  display: block;
+  max-width: 100%;
+}
 
     .hero__subtitle {
       color: var(--muted);
@@ -245,7 +259,10 @@
     <!-- ===================== ЗАГОЛОВОК ===================== -->
     <section class="hero container">
       <p class="hero__eyebrow">Портфолио</p>
-      <h1 class="hero__title">Проекты TINA Production</h1>
+     <h1 class="hero__title">
+  <span>Проекты</span>
+  <img class="hero__title-logo" src="tina-production-name.png" alt="TINA Production" />
+</h1>
       <p class="hero__subtitle">
         Сайты, каналы и другие работы — всё в одном месте.
       </p>
