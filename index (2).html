@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TINA Production — Портфолио</title>
+
+  <style>
+    /* ========== БАЗА ========== */
+    :root {
+      --bg: #0f1115;
+      --surface: #171a21;
+      --border: #262b36;
+      --text: #e8eaee;
+      --muted: #9aa3b2;
+      --accent: #6c5ce7;
+      --accent-2: #00d1b2;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto,
+                   "Helvetica Neue", Arial, sans-serif;
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(108, 92, 231, 0.18), transparent 60%),
+        radial-gradient(900px 500px at 90% 0%, rgba(0, 209, 178, 0.12), transparent 60%),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    .container {
+      width: min(1120px, 100% - 40px);
+      margin-inline: auto;
+    }
+
+    /* ========== ШАПКА ========== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: rgba(15, 17, 21, 0.7);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand__logo img {
+      display: block;
+      height: 44px;
+      width: 44px;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    .brand__name img {
+      display: block;
+      height: 26px;
+      width: auto;
+      max-width: 200px;
+      object-fit: contain;
+    }
+
+    /* ========== ЗАГОЛОВОК ========== */
+    .hero { padding: 56px 0 28px; }
+
+    .hero__eyebrow {
+      color: var(--accent-2);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      font-weight: 700;
+      margin: 0 0 10px;
+    }
+
+    .hero__title {
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin: 0 0 12px;
+    }
+
+    .hero__subtitle {
+      color: var(--muted);
+      margin: 0;
+      max-width: 620px;
+    }
+
+    /* ========== СЕТКА КАРТОЧЕК ========== */
+    .projects { padding: 12px 0 72px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)),
+        var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(108, 92, 231, 0.6);
+      box-shadow: var(--shadow);
+    }
+
+    .card:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .card__thumb {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .card__thumb img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card__thumb--econom   { background: linear-gradient(135deg, #1f2a44, #2a3d63); }
+    .card__thumb--house    { background: linear-gradient(135deg, #2a1f3d, #4a2a5e); }
+    .card__thumb--youtube  { background: linear-gradient(135deg, #3a0d12, #7a1420); }
+    .card__thumb--telegram { background: linear-gradient(135deg, #0e2a3a, #14728a); }
+
+    .card__icon {
+      width: 56px;
+      height: 56px;
+      opacity: 0.85;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .card__badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.35);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(6px);
+    }
+
+    .card__body {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+      padding: 18px 18px 20px;
+    }
+
+    .card__title {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+
+    .card__desc {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .card__link {
+      margin-top: auto;
+      padding-top: 10px;
+      color: var(--accent-2);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* ========== ПОДВАЛ ========== */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 22px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .site-footer p { margin: 0; }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== ШАПКА ===================== -->
+  <header class="site-header">
+    <div class="container header__inner">
+      <div class="brand">
+        <!-- ЛОГО -->
+        <div class="brand__logo">
+          <img src="logo.png" alt="Логотип TINA Production" />
+        </div>
+        <!-- НАЗВАНИЕ КОМПАНИИ (PNG) -->
+        <div class="brand__name">
+          <img src="tina-production-name.png" alt="TINA Production" />
+        </div>
+      </div>
+      <nav class="header__nav"></nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== ЗАГОЛОВОК ===================== -->
+    <section class="hero container">
+      <p class="hero__eyebrow">Портфолио</p>
+      <h1 class="hero__title">Проекты TINA Production</h1>
+      <p class="hero__subtitle">
+        Сайты, каналы и другие работы — всё в одном месте.
+      </p>
+    </section>
+
+    <!-- ===================== КАРТОЧКИ ===================== -->
+    <section class="projects container">
+      <div class="grid">
+
+        <!-- ---------- Econom&Manag ---------- -->
+        <a class="card" href="#" target="_blank" rel="noopener noreferrer">
+          <div class="card__thumb card__thumb--econom">
+            <svg class="card__icon" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 3v18h18" />
+              <path d="M7 15l4-5 3 3 5-7" />
+            </svg>
+            <span class="card__badge">Сайт</span>
+          </div>
+          <div class="card__body">
+            <h2 class="card__title">Econom&amp;Manag</h2>
+            <p class="card__desc">Веб-проект по экономике и менеджменту.</p>
+            <span class="card__link">Открыть сайт →</span>
+          </div>
+        </a>
+
+        <!-- ---------- The Strange High House in the Mist ---------- -->
+        <a class="card" href="#" target="_blank" rel="noopener noreferrer">
+          <div class="card__thumb card__thumb--house">
+            <svg class="card__icon" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 10.5 12 3l9 7.5" />
+              <path d="M5 9.5V21h14V9.5" />
+            </svg>
+            <span class="card__badge">Сайт</span>
+          </div>
+          <div class="card__body">
+            <h2 class="card__title">The Strange High House in the Mist</h2>
+            <p class="card__desc">Атмосферный веб-проект.</p>
+            <span class="card__link">Открыть сайт →</span>
+          </div>
+        </a>
+
+        <!-- ---------- YouTube ---------- -->
+        <a class="card" href="#" target="_blank" rel="noopener noreferrer">
+          <div class="card__thumb card__thumb--youtube">
+            <svg class="card__icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/>
+            </svg>
+            <span class="card__badge">Канал</span>
+          </div>
+          <div class="card__body">
+            <h2 class="card__title">YouTube</h2>
+            <p class="card__desc">Видео, обзоры и материалы TINA Production.</p>
+            <span class="card__link">Смотреть →</span>
+          </div>
+        </a>
+
+        <!-- ---------- Telegram ---------- -->
+        <a class="card" href="#" target="_blank" rel="noopener noreferrer">
+          <div class="card__thumb card__thumb--telegram">
+            <svg class="card__icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M21.9 4.3 18.6 20c-.2 1.1-.9 1.3-1.8.8l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.2-8.3c.4-.4-.1-.6-.6-.2L6 12.9 1.1 11.4c-1-.3-1.1-1 .2-1.5L20.5 2.7c.9-.3 1.6.2 1.4 1.6z"/>
+            </svg>
+            <span class="card__badge">Канал</span>
+          </div>
+          <div class="card__body">
+            <h2 class="card__title">Telegram</h2>
+            <p class="card__desc">Новости и публикации проекта.</p>
+            <span class="card__link">Перейти →</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== ПОДВАЛ ===================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> TINA Production</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
