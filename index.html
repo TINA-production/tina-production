@@ -7,226 +7,229 @@
 
   <style>
     /* ========== БАЗА ========== */
-    :root {
-      --bg: #0f1115;
-      --surface: #171a21;
-      --border: #262b36;
-      --text: #e8eaee;
-      --muted: #9aa3b2;
-      --accent: #6c5ce7;
-      --accent-2: #00d1b2;
-      --radius: 16px;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-    }
+:root {
+  --bg: #ffffff;
+  --header-bg: #0a0a0a;
+  --text: #1a1a1a;
+  --muted: #8a8f98;
+  --card-title: #5a5f68;
+  --card-text: #8a8f98;
+  --card-link: #7a7a85;
+  --accent: #b445f4;
+  --border-light: #e5e5e5;
+  --radius: 16px;
+}
 
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
 
-    body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto,
-                   "Helvetica Neue", Arial, sans-serif;
-      background:
-        radial-gradient(1200px 600px at 10% -10%, rgba(108, 92, 231, 0.18), transparent 60%),
-        radial-gradient(900px 500px at 90% 0%, rgba(0, 209, 178, 0.12), transparent 60%),
-        var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-    }
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
 
-    a { color: inherit; }
+a { color: inherit; }
 
-    .container {
-      width: min(1120px, 100% - 40px);
-      margin-inline: auto;
-    }
+.container {
+  width: min(1120px, 100% - 40px);
+  margin-inline: auto;
+}
 
-    /* ========== ШАПКА ========== */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: blur(10px);
-      background: rgba(15, 17, 21, 0.7);
-      border-bottom: 1px solid var(--border);
-    }
+/* ========== ШАПКА (чёрная) ========== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--header-bg);
+  color: #ffffff;
+}
 
-    .header__inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 0;
-    }
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+}
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
 
-    .brand__logo img {
-      display: block;
-      height: 44px;
-      width: 44px;
-      object-fit: contain;
-      border-radius: 10px;
-    }
+.brand__logo img {
+  display: block;
+  height: 44px;
+  width: 44px;
+  object-fit: contain;
+  border-radius: 10px;
+}
 
-    .brand__name img {
-      display: block;
-      height: 52px;
-      width: auto;
-      max-width: 400px;
-      object-fit: contain;
-    }
+.brand__name img {
+  display: block;
+  height: 26px;
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+}
 
-    /* ========== ЗАГОЛОВОК ========== */
-    .hero { padding: 40px 0 28px; }
+/* ========== ЗАГОЛОВОК ========== */
+.hero { padding: 56px 0 28px; }
 
-    .hero__title {
+.hero__title {
   font-size: clamp(28px, 4vw, 44px);
   line-height: 1.1;
   letter-spacing: -0.02em;
   margin: 0 0 12px;
-
-  /* выстраиваем текст и картинку в строку */
+  color: var(--text);
   display: flex;
-  align-items: center;   /* выравнивание по центру по вертикали */
-  flex-wrap: wrap;       /* на узких экранах картинка переносится под текст */
-  gap: 0.08em;            /* отступ между текстом и картинкой */
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4em;
 }
 
-/* сама картинка — её высота = размеру шрифта заголовка */
 .hero__title-logo {
-  height: 2.1em;         /* ← см. ниже, как подобрать */
+  height: 0.9em;
   width: auto;
   display: block;
   max-width: 100%;
 }
 
-    .hero__subtitle {
-      color: var(--muted);
-      margin: 0;
-      max-width: 620px;
-    }
+.hero__subtitle {
+  color: var(--muted);
+  margin: 0;
+  max-width: 620px;
+}
 
-    /* ========== СЕТКА КАРТОЧЕК ========== */
-    .projects { padding: 12px 0 72px; }
+/* ========== СЕТКА КАРТОЧЕК ========== */
+.projects { padding: 12px 0 72px; }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 22px;
-    }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 22px;
+}
 
-    .card {
-      display: flex;
-      flex-direction: column;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)),
-        var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      text-decoration: none;
-      color: inherit;
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-    }
+.card {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--card-text);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
 
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(108, 92, 231, 0.6);
-      box-shadow: var(--shadow);
-    }
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow:
+    0 0 0 1px var(--accent),
+    0 10px 30px rgba(180, 69, 244, 0.25);
+}
 
-    .card:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-    }
+.card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
 
-    .card__thumb {
-      position: relative;
-      aspect-ratio: 16 / 9;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-    }
+.card__thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
 
-    .card__thumb img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+.card__thumb img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-    .card__thumb--econom   { background: linear-gradient(135deg, #1f2a44, #2a3d63); }
-    .card__thumb--house    { background: linear-gradient(135deg, #2a1f3d, #4a2a5e); }
-    .card__thumb--youtube  { background: linear-gradient(135deg, #3a0d12, #7a1420); }
-    .card__thumb--telegram { background: linear-gradient(135deg, #0e2a3a, #14728a); }
-    .card__thumb--book1    { background: linear-gradient(135deg, #2a2410, #5e4a1a); }
-    .card__thumb--book2    { background: linear-gradient(135deg, #1a2a24, #1a5e4a); }
+.card__thumb--econom   { background: linear-gradient(135deg, #1f2a44, #2a3d63); }
+.card__thumb--house    { background: linear-gradient(135deg, #2a1f3d, #4a2a5e); }
+.card__thumb--youtube  { background: linear-gradient(135deg, #3a0d12, #7a1420); }
+.card__thumb--telegram { background: linear-gradient(135deg, #0e2a3a, #14728a); }
+.card__thumb--book1    { background: linear-gradient(135deg, #2a2410, #5e4a1a); }
+.card__thumb--book2    { background: linear-gradient(135deg, #1a2a24, #1a5e4a); }
 
-    .card__icon {
-      width: 56px;
-      height: 56px;
-      opacity: 0.85;
-      color: rgba(255, 255, 255, 0.9);
-    }
+.card__icon {
+  width: 56px;
+  height: 56px;
+  opacity: 0.9;
+  color: rgba(255, 255, 255, 0.9);
+}
 
-    .card__badge {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 5px 9px;
-      border-radius: 999px;
-      background: rgba(0, 0, 0, 0.35);
-      color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      backdrop-filter: blur(6px);
-    }
+.card__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(6px);
+}
 
-    .card__body {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      flex: 1;
-      padding: 18px 18px 20px;
-    }
+.card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  padding: 18px 18px 20px;
+  background: transparent;
+}
 
-    .card__title {
-      margin: 0;
-      font-size: 18px;
-      letter-spacing: -0.01em;
-    }
+.card__title {
+  margin: 0;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  color: var(--card-title);
+}
 
-    .card__desc {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
+.card__desc {
+  margin: 0;
+  color: var(--card-text);
+  font-size: 14px;
+}
 
-    .card__link {
-      margin-top: auto;
-      padding-top: 10px;
-      color: var(--accent-2);
-      font-size: 14px;
-      font-weight: 600;
-    }
+.card__link {
+  margin-top: auto;
+  padding-top: 10px;
+  color: var(--card-link);
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
 
-    /* ========== ПОДВАЛ ========== */
-    .site-footer {
-      border-top: 1px solid var(--border);
-      padding: 22px 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
+.card:hover .card__link {
+  color: var(--accent);
+}
 
-    .site-footer p { margin: 0; }
+/* ========== ПОДВАЛ (визуально не меняем) ========== */
+.site-footer {
+  background: #0f1115;
+  border-top: 1px solid #262b36;
+  padding: 22px 0;
+  color: #9aa3b2;
+  font-size: 14px;
+}
+
+.site-footer p { margin: 0; }
   </style>
 </head>
 <body>
@@ -253,7 +256,7 @@
     <section class="hero container">
      <h1 class="hero__title">
   <span>Проекты</span>
-  <img class="hero__title-logo" src="tina-production-name.png" alt="TINA Production" />
+  <img class="hero__title-logo" src="tina-production-name-hero.png" alt="TINA Production" />
 </h1>
       <p class="hero__subtitle">
         Сайты, каналы и другие работы — всё в одном месте.
