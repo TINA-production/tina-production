@@ -195,6 +195,7 @@
       height: 56px;
       opacity: 0.85;
       color: rgba(255, 255, 255, 0.9);
+      color: var(--accent);
     }
 
     .card__badge {
@@ -240,11 +241,17 @@
       color: var(--card-link);
       font-size: 14px;
       font-weight: 600;
-      transition: color 0.2s ease;
+      transition: color 0.4s ease;
     }
 
     .card:hover .card__link {
-      color: var(--accent);
+      /* весь текст карточки становится фиолетовым при наведении */
+.card:hover .card__title,
+.card:hover .card__desc,
+.card:hover .card__link,
+.card:hover .card__badge {
+  color: var(--accent);
+}
     }
 
     /* ========== ПОДВАЛ (визуально тот же, что был) ========== */
