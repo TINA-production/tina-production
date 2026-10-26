@@ -148,15 +148,18 @@
       transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
-    /* --- ховер: фиолетовая подсветка по контуру --- */
+    /* --- ховер: усиленное свечение, без обводки --- */
     .card:hover {
       transform: translateY(-4px);
-      border-color: var(--accent);
       background: rgba(255, 255, 255, 0.65);
+
+      /* рамка остаётся «стеклянной», фиолетовой обводки больше нет */
+      border-color: rgba(255, 255, 255, 0.75);
+
       box-shadow:
-        0 0 0 1px var(--accent),
-        0 10px 30px rgba(180, 69, 244, 0.25),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        0 0 40px 0 rgba(180, 69, 244, 0.60),      /* мягкое свечение вокруг */
+        0 20px 50px rgba(180, 69, 244, 0.35),     /* фиолетовая тень снизу */
+        inset 0 1px 0 rgba(255, 255, 255, 0.90);  /* блик стекла сверху */
     }
 
     .card:focus-visible {
