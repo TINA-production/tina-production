@@ -7,229 +7,260 @@
 
   <style>
     /* ========== БАЗА ========== */
-:root {
-  --bg: #ffffff;
-  --header-bg: #0a0a0a;
-  --text: #1a1a1a;
-  --muted: #8a8f98;
-  --card-title: #5a5f68;
-  --card-text: #8a8f98;
-  --card-link: #7a7a85;
-  --accent: #b445f4;
-  --border-light: #e5e5e5;
-  --radius: 16px;
-}
+    :root {
+      --bg: #ffffff;
+      --header-bg: #0a0a0a;
+      --text: #1a1a1a;
+      --muted: #8a8f98;
+      --card-title: #5a5f68;
+      --card-text: #8a8f98;
+      --card-link: #7a7a85;
+      --accent: #b445f4;
+      --border-light: #e5e5e5;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
 
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
 
-body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto,
-               "Helvetica Neue", Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-}
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto,
+                   "Helvetica Neue", Arial, sans-serif;
+      /* белый фон + еле заметные цветные пятна, чтобы матовое стекло читалось */
+      background:
+        radial-gradient(600px 400px at 15% 20%, rgba(180, 69, 244, 0.10), transparent 70%),
+        radial-gradient(700px 500px at 85% 35%, rgba(108, 92, 231, 0.08), transparent 70%),
+        radial-gradient(500px 400px at 50% 95%, rgba(0, 209, 178, 0.06), transparent 70%),
+        #ffffff;
+      background-attachment: fixed;
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
 
-a { color: inherit; }
+    a { color: inherit; }
 
-.container {
-  width: min(1120px, 100% - 40px);
-  margin-inline: auto;
-}
+    .container {
+      width: min(1120px, 100% - 40px);
+      margin-inline: auto;
+    }
 
-/* ========== ШАПКА (чёрная) ========== */
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: var(--header-bg);
-  color: #ffffff;
-}
+    /* ========== ШАПКА (чёрная) ========== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--header-bg);
+      color: #ffffff;
+    }
 
-.header__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 0;
-}
+    .header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+    }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
 
-.brand__logo img {
-  display: block;
-  height: 44px;
-  width: 44px;
-  object-fit: contain;
-  border-radius: 10px;
-}
+    .brand__logo img {
+      display: block;
+      height: 44px;
+      width: 44px;
+      object-fit: contain;
+      border-radius: 10px;
+    }
 
-.brand__name img {
-  display: block;
-  height: 26px;
-  width: auto;
-  max-width: 200px;
-  object-fit: contain;
-}
+    .brand__name img {
+      display: block;
+      height: 52px;
+      width: auto;
+      max-width: 400px;
+      object-fit: contain;
+    }
 
-/* ========== ЗАГОЛОВОК ========== */
-.hero { padding: 56px 0 28px; }
+    /* ========== ЗАГОЛОВОК ========== */
+    .hero { padding: 40px 0 28px; }
 
-.hero__title {
-  font-size: clamp(28px, 4vw, 44px);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  margin: 0 0 12px;
-  color: var(--text);
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.4em;
-}
+    .hero__title {
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin: 0 0 12px;
+      color: var(--text);
 
-.hero__title-logo {
-  height: 0.9em;
-  width: auto;
-  display: block;
-  max-width: 100%;
-}
+      /* выстраиваем текст и картинку в строку */
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.08em;
+    }
 
-.hero__subtitle {
-  color: var(--muted);
-  margin: 0;
-  max-width: 620px;
-}
+    /* сама картинка — её высота = размеру шрифта заголовка */
+    .hero__title-logo {
+      height: 2.1em;
+      width: auto;
+      display: block;
+      max-width: 100%;
+    }
 
-/* ========== СЕТКА КАРТОЧЕК ========== */
-.projects { padding: 12px 0 72px; }
+    .hero__subtitle {
+      color: var(--muted);
+      margin: 0;
+      max-width: 620px;
+    }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 22px;
-}
+    /* ========== СЕТКА КАРТОЧЕК ========== */
+    .projects { padding: 12px 0 72px; }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  background: transparent;
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius);
-  overflow: hidden;
-  text-decoration: none;
-  color: var(--card-text);
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-}
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 22px;
+    }
 
-.card:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent);
-  box-shadow:
-    0 0 0 1px var(--accent),
-    0 10px 30px rgba(180, 69, 244, 0.25);
-}
+    /* --- карточка: матовое стекло --- */
+    .card {
+      display: flex;
+      flex-direction: column;
 
-.card:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-}
+      /* полупрозрачный белый + размытие того, что под карточкой */
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(14px) saturate(160%);
+      -webkit-backdrop-filter: blur(14px) saturate(160%);
 
-.card__thumb {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-}
+      /* «стеклянная» кромка + блик сверху */
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      border-radius: var(--radius);
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--card-text);
+      box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.85);
 
-.card__thumb img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
 
-.card__thumb--econom   { background: linear-gradient(135deg, #1f2a44, #2a3d63); }
-.card__thumb--house    { background: linear-gradient(135deg, #2a1f3d, #4a2a5e); }
-.card__thumb--youtube  { background: linear-gradient(135deg, #3a0d12, #7a1420); }
-.card__thumb--telegram { background: linear-gradient(135deg, #0e2a3a, #14728a); }
-.card__thumb--book1    { background: linear-gradient(135deg, #2a2410, #5e4a1a); }
-.card__thumb--book2    { background: linear-gradient(135deg, #1a2a24, #1a5e4a); }
+    /* --- ховер: фиолетовая подсветка по контуру --- */
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      background: rgba(255, 255, 255, 0.65);
+      box-shadow:
+        0 0 0 1px var(--accent),
+        0 10px 30px rgba(180, 69, 244, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    }
 
-.card__icon {
-  width: 56px;
-  height: 56px;
-  opacity: 0.9;
-  color: rgba(255, 255, 255, 0.9);
-}
+    .card:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
 
-.card__badge {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 5px 9px;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.45);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(6px);
-}
+    .card__thumb {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
 
-.card__body {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  flex: 1;
-  padding: 18px 18px 20px;
-  background: transparent;
-}
+    .card__thumb img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-.card__title {
-  margin: 0;
-  font-size: 18px;
-  letter-spacing: -0.01em;
-  color: var(--card-title);
-}
+    .card__thumb--econom   { background: linear-gradient(135deg, #1f2a44, #2a3d63); }
+    .card__thumb--house    { background: linear-gradient(135deg, #2a1f3d, #4a2a5e); }
+    .card__thumb--youtube  { background: linear-gradient(135deg, #3a0d12, #7a1420); }
+    .card__thumb--telegram { background: linear-gradient(135deg, #0e2a3a, #14728a); }
+    .card__thumb--book1    { background: linear-gradient(135deg, #2a2410, #5e4a1a); }
+    .card__thumb--book2    { background: linear-gradient(135deg, #1a2a24, #1a5e4a); }
 
-.card__desc {
-  margin: 0;
-  color: var(--card-text);
-  font-size: 14px;
-}
+    .card__icon {
+      width: 56px;
+      height: 56px;
+      opacity: 0.85;
+      color: rgba(255, 255, 255, 0.9);
+    }
 
-.card__link {
-  margin-top: auto;
-  padding-top: 10px;
-  color: var(--card-link);
-  font-size: 14px;
-  font-weight: 600;
-  transition: color 0.2s ease;
-}
+    .card__badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.35);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(6px);
+    }
 
-.card:hover .card__link {
-  color: var(--accent);
-}
+    .card__body {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+      padding: 18px 18px 20px;
+      background: transparent;
+    }
 
-/* ========== ПОДВАЛ (визуально не меняем) ========== */
-.site-footer {
-  background: #0f1115;
-  border-top: 1px solid #262b36;
-  padding: 22px 0;
-  color: #9aa3b2;
-  font-size: 14px;
-}
+    .card__title {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+      color: var(--card-title);
+    }
 
-.site-footer p { margin: 0; }
+    .card__desc {
+      margin: 0;
+      color: var(--card-text);
+      font-size: 14px;
+    }
+
+    .card__link {
+      margin-top: auto;
+      padding-top: 10px;
+      color: var(--card-link);
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .card:hover .card__link {
+      color: var(--accent);
+    }
+
+    /* ========== ПОДВАЛ (визуально тот же, что был) ========== */
+    .site-footer {
+      background: #0f1115;
+      border-top: 1px solid #262b36;
+      padding: 22px 0;
+      color: #9aa3b2;
+      font-size: 14px;
+    }
+
+    .site-footer p { margin: 0; }
+
+    /* фолбэк для старых браузеров без поддержки backdrop-filter */
+    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+      .card {
+        background: rgba(245, 245, 248, 0.95);
+      }
+    }
   </style>
 </head>
 <body>
@@ -242,7 +273,7 @@ a { color: inherit; }
         <div class="brand__logo">
           <img src="logo.png" alt="Логотип TINA Production" />
         </div>
-        <!-- НАЗВАНИЕ КОМПАНИИ (PNG) -->
+        <!-- НАЗВАНИЕ КОМПАНИИ (PNG) — шапка -->
         <div class="brand__name">
           <img src="tina-production-name.png" alt="TINA Production" />
         </div>
@@ -254,10 +285,11 @@ a { color: inherit; }
   <main>
     <!-- ===================== ЗАГОЛОВОК ===================== -->
     <section class="hero container">
-     <h1 class="hero__title">
-  <span>Проекты</span>
-  <img class="hero__title-logo" src="tina-production-name-hero.png" alt="TINA Production" />
-</h1>
+      <h1 class="hero__title">
+        <span>Проекты</span>
+        <!-- ВНИМАНИЕ: отдельный файл для строки "Проекты" — правится независимо от шапки -->
+        <img class="hero__title-logo" src="tina-production-name-hero.png" alt="TINA Production" />
+      </h1>
       <p class="hero__subtitle">
         Сайты, каналы и другие работы — всё в одном месте.
       </p>
